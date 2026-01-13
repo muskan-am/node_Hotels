@@ -33,7 +33,7 @@ router.get('/', async (req, res) => {
 })
 
 
-router.get('//:workType', async (req,res)=> {
+router.get('/:workType', async (req,res)=> {
     try{
        //Extract the work type from the URL parameter
        const workType = req.params.workType;
