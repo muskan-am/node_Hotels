@@ -1,24 +1,24 @@
-🏨 # Node Hotel Application
+🏨 ### Node Hotel Application
 
-The Node Hotel application is a backend system built using Node.js, Express.js, and MongoDB.
-It manages hotel staff (persons) and menu items, and also provides authentication using JWT for secure access.
+-The Node Hotel application is a backend system built using Node.js, Express.js, and MongoDB.
+-It manages hotel staff (persons) and menu items, and also provides authentication using JWT for secure access.
 
-This application supports:
-1: User Signup
-2: User Login
-3: Viewing User Profile
-4: CRUD operations for Persons and Menu Items
+-This application supports:
+- 1: User Signup
+- 2: User Login
+- 3: Viewing User Profile
+- 4: CRUD operations for Persons and Menu Items
 
 
-🔐 # Authentication (JWT Based)
-Authentication is implemented using JSON Web Tokens (JWT).
+🔐 ### Authentication (JWT Based)
+- Authentication is implemented using JSON Web Tokens (JWT).
 
 Auth Flow
-1: User signs up or logs in
-2: Server generates a JWT token
-3: Token is sent to the client
-4: Client sends token in the Authorization header for protected routes
-5: Server verifies token using middleware
+- 1: User signs up or logs in
+- 2: Server generates a JWT token
+- 3: Token is sent to the client
+- 4: Client sends token in the Authorization header for protected routes
+- 5: Server verifies token using middleware
 
 ## Endpoints
 
