@@ -42,13 +42,13 @@ const personSchema = new mongoose.Schema({
 });
 
 
-personSchema.pre('save', async function(next){
+personSchema.pre('save', async function(){
     const person = this; //this represent ham har record ke liye jab bhi save operation perform karna hoga tho 
     //tho usse pahele premiddle ware ko call hoga aur sara data person me storge kar rahe hoge
 
 
     // password change nahi hua to kuch mat karo
-    if(!person.isModified('password')) return next();
+    if(!person.isModified('password')) return;
 
     try{
         // salt generate
@@ -59,9 +59,8 @@ personSchema.pre('save', async function(next){
 
        //Override the plan password with the hashed one
        person.password = hashedPassword;
-       next();
     }catch(err){
-        return next(err);
+        return err;
     }
 })
 
