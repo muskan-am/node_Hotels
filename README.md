@@ -1,121 +1,215 @@
-## NODE HOTEL APPLICATION
+# 🏨 Node Hotel Application (Backend)
 
--The Node Hotel application is a backend system built using Node.js, Express.js, and MongoDB.
--It manages hotel staff (persons) and menu items, and also provides authentication using JWT for secure access.
+The **Node Hotel Application** is a backend system built using **Node.js, Express.js, and MongoDB**.  
+It is designed to manage **hotel staff (Persons)** and **Menu Items**, along with **JWT-based authentication** for secure access.
 
--This application supports:
-- 1: User Signup
-- 2: User Login
-- 3: Viewing User Profile
-- 4: CRUD operations for Persons and Menu Items
+---
 
+## 🚀 Features
 
- ## Authentication (JWT Based)
-- Authentication is implemented using JSON Web Tokens (JWT).
+### 👤 User Authentication
+- User Signup
+- User Login
+- View User Profile
+- JWT-based secure authentication
 
-Auth Flow
-- 1: User signs up or logs in
-- 2: Server generates a JWT token
-- 3: Token is sent to the client
-- 4: Client sends token in the Authorization header for protected routes
-- 5: Server verifies token using middleware
+### 🧑‍🍳 Hotel Staff Management (Persons)
+- Add new staff members
+- View all staff
+- Filter staff by work type (chef, waiter, manager, etc.)
+- Update staff details
+- Delete staff records
 
-## Endpoints
+### 🍽️ Menu Management
+- Add menu items
+- View all menu items
+- Filter menu items by taste (sweet, spicy, sour)
+- Update menu items
+- Delete menu items
 
-### Persons
-- **Add a Person:**
-  - Endpoint: `POST /person`
-  - Description: Adds a person to the system with details such as name, role, etc.
+---
 
-- **Get All Persons:**
-  - Endpoint: `GET /person`
-  - Description: Retrieves a list of all persons in the system.
+## 🔐 Authentication (JWT Based)
 
-- **Get Persons by Work Type:**
-  - Endpoint: `GET /person/:workType`
-  - Description: Retrieves a list of persons based on their work type (e.g., chef, waiter, manager).
+Authentication is implemented using **JSON Web Tokens (JWT)**.
 
-- **Update a Person:**
-  - Endpoint: `PUT /person/:id`
-  - Description: Updates the details of a specific person identified by their ID.
+### 🔄 Authentication Flow
+1. User signs up or logs in
+2. Server generates a JWT token
+3. Token is sent to the client
+4. Client sends token in the `Authorization` header
+5. Server verifies token using middleware for protected routes
 
-- **Delete a Person:**
-  - Endpoint: `DELETE /person/:id`
-  - Description: Deletes a person from the system based on their ID.
+---
 
-### Menu Items
-- **Add a Menu Item:**
-  - Endpoint: `POST /menu`
-  - Description: Adds a menu item to the system with details such as name, price, taste, etc.
+## 🧰 Tech Stack
 
-- **Get All Menu Items:**
-  - Endpoint: `GET /menu`
-  - Description: Retrieves a list of all menu items in the system.
+- **Node.js**
+- **Express.js**
+- **MongoDB**
+- **Mongoose**
+- **JWT (JSON Web Token)**
 
-- **Get Menu Items by Taste:**
-  - Endpoint: `GET /menu/:taste`
-  - Description: Retrieves a list of menu items based on their taste (e.g., sweet, spicy, sour).
+---
 
-- **Update a Menu Item:**
-  - Endpoint: `PUT /menu/:id`
-  - Description: Updates the details of a specific menu item identified by its ID.
+## 📁 Project Structure
 
-- **Delete a Menu Item:**
-  - Endpoint: `DELETE /menu/:id`
-  - Description: Deletes a menu item from the system based on its ID.
+```
+node_Hotels/
+│
+├── models/          # Mongoose schemas
+├── routers/         # API routes
+├── db.js            # Database connection
+├── jwt.js           # JWT utilities & middleware
+├── server.js        # Entry point
+├── .gitignore
+├── package.json
+└── README.md
+```
 
-## Data Models
+---
 
-### Person
-The `Person` data model represents information about staff members in the hotel.
+## 🔗 API Endpoints
 
-- **Fields:**
-  - `name`: String (Person's name)
-  - `age`: Number (Person's age)
-  - `work`: Enum (Role in the hotel, such as chef, waiter, manager)
-  - `mobile`: String (Person's mobile number)
-  - `email`: String (Person's email address, unique)
-  - `address`: String (Person's address)
-  - `salary`: Number (Person's salary)
+### 👥 Persons (Hotel Staff)
 
-- **Example:**
-  ```json
-  {
-    "name": "John Doe",
-    "age": 30,
-    "work": "waiter",
-    "mobile": "123-456-7890",
-    "email": "john@example.com",
-    "address": "123 Main Street",
-    "salary": 30000
-  }
+| Method | Endpoint | Description |
+|------|---------|-------------|
+| POST | `/person` | Add a new staff member |
+| GET | `/person` | Get all staff members |
+| GET | `/person/:workType` | Get staff by work type |
+| PUT | `/person/:id` | Update staff details |
+| DELETE | `/person/:id` | Delete a staff member |
 
+---
 
-### Menu Item
-The `MenuItem` data model represents information about menu items available in the hotel.
+### 🍽️ Menu Items
 
-- **Fields:**
-  - `name`: String (Item's name)
-  - `price`: Number (Item's price)
-  - `taste`: Enum (Item's taste, such as sweet, spicy, sour)
-  - `is_drink`: Boolean (Indicates if the item is a drink, default is `false`)
-  - `ingredients`: Array of Strings (List of ingredients, default is an empty array)
-  - `num_sales`: Number (Number of sales for the item, default is `0`)
+| Method | Endpoint | Description |
+|------|---------|-------------|
+| POST | `/menu` | Add a menu item |
+| GET | `/menu` | Get all menu items |
+| GET | `/menu/:taste` | Get menu items by taste |
+| PUT | `/menu/:id` | Update menu item |
+| DELETE | `/menu/:id` | Delete menu item |
 
-- **Example:**
-  ```json
-  {
-    "name": "Spicy Chicken Curry",
-    "price": 12.99,
-    "taste": "spicy",
-    "is_drink": false,
-    "ingredients": ["chicken", "spices", "vegetables"],
-    "num_sales": 50
-  }
+---
 
+## 📦 Data Models
 
-## Usage
+### 🧑 Person Model
 
-1. **Install Dependencies:**
-   ```bash
-   npm install
+Represents hotel staff information.
+
+**Fields:**
+- `name` (String) – Staff name
+- `age` (Number) – Staff age
+- `work` (Enum) – Role (chef, waiter, manager)
+- `mobile` (String) – Mobile number
+- `email` (String) – Email (unique)
+- `address` (String) – Address
+- `salary` (Number) – Salary
+
+**Example:**
+```json
+{
+  "name": "John Doe",
+  "age": 30,
+  "work": "waiter",
+  "mobile": "123-456-7890",
+  "email": "john@example.com",
+  "address": "123 Main Street",
+  "salary": 30000
+}
+```
+
+---
+
+### 🍕 Menu Item Model
+
+Represents food and drink items.
+
+**Fields:**
+- `name` (String) – Item name
+- `price` (Number) – Item price
+- `taste` (Enum) – Taste (sweet, spicy, sour)
+- `is_drink` (Boolean) – Default: `false`
+- `ingredients` (Array) – Default: empty array
+- `num_sales` (Number) – Default: `0`
+
+**Example:**
+```json
+{
+  "name": "Spicy Chicken Curry",
+  "price": 12.99,
+  "taste": "spicy",
+  "is_drink": false,
+  "ingredients": ["chicken", "spices", "vegetables"],
+  "num_sales": 50
+}
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone the repository
+```bash
+git clone https://github.com/muskan-am/node_Hotels.git
+```
+
+### 2️⃣ Navigate to project directory
+```bash
+cd node_Hotels
+```
+
+### 3️⃣ Install dependencies
+```bash
+npm install
+```
+
+### 4️⃣ Create `.env` file
+```env
+PORT=3000
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+```
+
+### 5️⃣ Start the server
+```bash
+node server.js
+```
+
+Server will run at:
+```
+http://localhost:3000
+```
+
+---
+
+## 🔒 Security
+
+- JWT-based authentication
+- Protected routes using middleware
+- Environment variables for sensitive data
+
+---
+
+## 📌 Future Enhancements
+
+- Role-based authorization (Admin / Staff)
+- Pagination & search
+- Swagger API documentation
+- Frontend integration
+
+---
+
+## 👩‍💻 Author
+
+**Muskan Kesharwani**  
+Backend Developer | Node.js | MongoDB  
+
+---
+
+⭐ If you like this project, don’t forget to star the repository!
+
